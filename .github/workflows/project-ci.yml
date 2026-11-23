@@ -1,0 +1,44 @@
+name: Project CI
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  report:
+    name: Generate and publish the deadline report
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+      - name: Run the planner on the demonstration CSV
+        run: python -m deadline_radar data/demo.csv --as-of 2026-11-23 --days 7 --daily-minutes 90
+      - name: Verify the report files exist and are nonempty
+        run: |
+          test -s dist/report.md
+          test -s dist/report.json
+      - name: Upload both report formats
+        id: publish
+        uses: actions/upload-artifact@v7
+        with:
+          name: deadline-report
+          path: |
+            dist/report.md
+            dist/report.json
+          if-no-files-found: error
+          retention-days: 90
+      - name: Show the report on the run summary page
+        env:
+          ARTIFACT_URL: ${{ steps.publish.outputs.artifact-url }}
+        run: |
+          cat dist/report.md >> "$GITHUB_STEP_SUMMARY"
+          printf '\n[Скачать Markdown и JSON](%s)\n' "$ARTIFACT_URL" >> "$GITHUB_STEP_SUMMARY"
