@@ -2,14 +2,14 @@
 
 ## Проверка работы
 
-| Раздел | Что смотреть |
-| --- | --- |
-| [Quality CI](.github/workflows/quality-ci.yml) | Ruff и тесты на Python 3.12 и 3.13. В журнале `Verify workload calculations and CSV-to-report behavior` перечислены проверки расчёта и CLI. |
-| [Project CI](.github/workflows/project-ci.yml) | Отчёт на вкладке **Summary** и архив `deadline-report` в разделе **Artifacts**. В архив входят `report.md` и `report.json`. |
-| [README.md](README.md) | Задача, запуск, алгоритм, новый функционал и оба workflow. |
-| [AI_MODELS.md](AI_MODELS.md) | Модель и её роль в разработке. |
+| Workflow | Успешный запуск | Что смотреть |
+| --- | --- | --- |
+| [Quality CI](https://github.com/Ahsoka1Tano/deadline-radar/actions/workflows/quality-ci.yml) | [Журналы проверок](https://github.com/Ahsoka1Tano/deadline-radar/actions/runs/45237864673) | Ruff и по семь тестов на Python 3.12 и 3.13. В журнале `Verify workload calculations and CSV-to-report behavior` перечислены проверки расчёта и CLI. |
+| [Project CI](https://github.com/Ahsoka1Tano/deadline-radar/actions/workflows/project-ci.yml) | [Отчёт и журнал генерации](https://github.com/Ahsoka1Tano/deadline-radar/actions/runs/45237864694) | Markdown на вкладке **Summary** и [архив `deadline-report`](https://github.com/Ahsoka1Tano/deadline-radar/actions/runs/45237864694/artifacts/14850292895) с `report.md` и `report.json`. Для скачивания ZIP нужно войти в GitHub. |
 
-Ссылки на конкретные успешные запуски и артефакт появятся после публикации и проверки GitHub Actions.
+Оба запуска относятся к [коммиту `d002a03`](https://github.com/Ahsoka1Tano/deadline-radar/commit/d002a03aaaa106e95cf3591c75bd1b7166a816c3) с приложением, тестами и workflow. Запуски после добавления этих ссылок доступны на [вкладке Actions](https://github.com/Ahsoka1Tano/deadline-radar/actions?query=branch%3Amain).
+
+Инструкция по запуску и алгоритм описаны в [README.md](README.md). Использование ИИ раскрыто в [AI_MODELS.md](AI_MODELS.md).
 
 ## Как проверить результат
 
